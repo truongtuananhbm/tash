@@ -1,0 +1,44 @@
+networks:
+  TTA:
+    driver: bridge
+
+volumes:
+  db:
+
+services:
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: ${USERNAME_DB}
+      POSTGRES_PASSWORD: ${PASSWORD_DB}
+      POSTGRES_DB: ${NAME_DB}
+      PGDATA: /data/postgres
+    volumes:
+      - db:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - TTA
+    restart: unless-stopped
+
+  api:
+    image: resource-management
+    ports:
+      - 30111:30111
+    networks:
+      - TTA
+    depends_on:
+      - db
+    environment:
+      - .env
+    restart: always
+
+  adminer:
+    image: adminer
+    ports:
+      - 8085:8080
+    networks:
+      - TTA
+    depends_on:
+      - db
+    restart: unless-stopped

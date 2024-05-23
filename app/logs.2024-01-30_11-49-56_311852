@@ -1,0 +1,26 @@
+INFO     2024-01-30 11:52:40.680 request id: app - uvicorn.server:serve - Started server process [449935]
+INFO     2024-01-30 11:52:40.681 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2024-01-30 11:52:40.682 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2024-01-30 11:52:45.193 request id: app - uvicorn.server:shutdown - Shutting down
+INFO     2024-01-30 11:52:45.295 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2024-01-30 11:52:45.296 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2024-01-30 11:52:45.296 request id: app - uvicorn.server:serve - Finished server process [449935]
+INFO     2024-01-30 11:54:13.546 request id: app - uvicorn.server:serve - Started server process [449990]
+INFO     2024-01-30 11:54:13.547 request id: app - uvicorn.lifespan.on:startup - Waiting for application startup.
+INFO     2024-01-30 11:54:13.548 request id: app - uvicorn.lifespan.on:startup - Application startup complete.
+INFO     2024-01-30 11:54:37.687 request id: app - uvicorn.protocols.http.h11_impl:send - 127.0.0.1:37824 - "GET /docs HTTP/1.1" 200
+INFO     2024-01-30 11:54:37.736 request id: app - uvicorn.protocols.http.h11_impl:send - 127.0.0.1:37824 - "GET /static/swagger-ui.css HTTP/1.1" 200
+INFO     2024-01-30 11:54:37.738 request id: app - uvicorn.protocols.http.h11_impl:send - 127.0.0.1:37828 - "GET /static/swagger-ui-bundle.js HTTP/1.1" 200
+INFO     2024-01-30 11:54:37.927 request id: app - uvicorn.protocols.http.h11_impl:send - 127.0.0.1:37828 - "GET /openapi.json HTTP/1.1" 200
+INFO     2024-01-30 11:54:49.745 request id: app - uvicorn.protocols.http.h11_impl:send - 127.0.0.1:56342 - "GET /actuator/health HTTP/1.1" 200
+INFO     2024-01-30 11:59:38.038 request id: app - rbl_fastapi_base.base.base_router:custom_route_handler - {'headers': {'content-type': 'application/json'}, 'request_body': {'email': 'admin@rabiloo.com', 'password': 'a12345678X'}}
+ERROR    2024-01-30 11:59:38.286 request id: app - app.src.exceptions.exception_handler:business_exception_handler - Incorrect Password
+None
+INFO     2024-01-30 11:59:38.287 request id: app - uvicorn.protocols.http.h11_impl:send - 127.0.0.1:58520 - "POST /rms/v1.0/login/access-token HTTP/1.1" 400
+INFO     2024-01-30 12:00:01.060 request id: app - rbl_fastapi_base.base.base_router:custom_route_handler - {'headers': {'content-type': 'application/json'}, 'request_body': {'email': 'admin@rabiloo.com', 'password': 'Rabiloo@123'}}
+INFO     2024-01-30 12:00:01.269 request id: app - rbl_fastapi_base.base.base_router:custom_route_handler - {'response_data': '{"code":"AUTH0000","message":"success","data":{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkByYWJpbG9vLmNvbSIsImV4cCI6MTcwNjU5MjYwMX0.NRiKZ1GlZFlJSm97qNfKQLcvVjJPQfbQk3497URTvys","refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkByYWJpbG9vLmNvbSIsImV4cCI6MTcwNjYwODgwMX0.RtmQEnf2qQLDthxskui1acOmrqxDII3L_0LEK-qSleg"},"links":null,"relationships":null,"timestamp":"2024-01-30 11:54:13"}'}
+INFO     2024-01-30 12:00:01.270 request id: app - uvicorn.protocols.http.h11_impl:send - 127.0.0.1:32904 - "POST /rms/v1.0/login/access-token HTTP/1.1" 200
+INFO     2024-01-30 14:36:16.374 request id: app - uvicorn.server:shutdown - Shutting down
+INFO     2024-01-30 14:36:16.475 request id: app - uvicorn.lifespan.on:shutdown - Waiting for application shutdown.
+INFO     2024-01-30 14:36:16.476 request id: app - uvicorn.lifespan.on:shutdown - Application shutdown complete.
+INFO     2024-01-30 14:36:16.477 request id: app - uvicorn.server:serve - Finished server process [449990]
