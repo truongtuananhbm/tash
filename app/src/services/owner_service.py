@@ -16,7 +16,7 @@ from app.src.exceptions.error_code import AuthErrorCode, BEErrorCode
 from app.src.models import Owner
 from app.src.repositories.owner import OwnerRepository
 from app.src.schemas.owner import OwnerCreate, OwnerUpdate
-from app.src.utils.connection.sql_connection import get_db_session
+from app.src.repositories.group import GroupRepository
 
 class OwnerService(object):
     """Define Owner service object."""
@@ -24,6 +24,7 @@ class OwnerService(object):
     def __init__(self) -> None:
         """Define constructor for Owner service object."""
         self.owner_repository = OwnerRepository(models.Owner)
+        self.group_repository = GroupRepository(models.Group)
 
     def get_owner_by_id(self, db_session: Session, owner_id: uuid.UUID) -> models.Owner:
         """Define get owner by id method."""
@@ -49,6 +50,18 @@ class OwnerService(object):
              owner_create.state_id=None
         if owner_create.force_id=='string':
              owner_create.force_id=None
+        if owner_create.group_id!='string':
+            group_name = self.group_repository.get(db_session, owner_create.group_id).name
+            if group_name == "Hộ gia đình":
+                owner_create.price=312000
+            if group_name == "Nhóm 1":
+                owner_create.price=312000
+            if group_name == "Nhóm 2":
+                owner_create.price=480000
+            if group_name == "Nhóm 3":
+                owner_create.price=876000
+            if group_name == "Nhóm 4":
+                owner_create.price=owner_create.garbageMass*217500*12
         owner = self.owner_repository.create(db_session, obj_in=owner_create)
         return owner
 

@@ -25,7 +25,7 @@ class ForceService(object):
            owner_data = {'name': owner.name}
            owners_data.append(owner_data)
         force_data = {key: value for key, value in force.__dict__.items() if key != '_sa_instance_state'}
-        force_data['owner'] = owners_data
+        force_data['force'] = owners_data
         if not force:
            raise BEErrorCode.FORCE_NOT_FOUND.value
         return force_data
@@ -87,7 +87,7 @@ class ForceService(object):
                 owner_data = {'name': owner.name}
                 owners_data.append(owner_data)
             force_data = {key: value for key, value in force.__dict__.items() if key != '_sa_instance_state'}
-            force_data['owner'] = owners_data
+            force_data['force'] = owners_data
             forces_data.append(force_data)
         return forces_data
     
