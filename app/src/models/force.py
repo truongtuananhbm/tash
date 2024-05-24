@@ -16,9 +16,9 @@ class Force(Base):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=generate_uuid)  # noqa
     name: Mapped[str] = mapped_column(String, unique=True, nullable=False)
     force: Mapped[List["Owner"]] = relationship('Owner', back_populates="force")
-    unit: Mapped[str] = mapped_column(String, unique=True, nullable=False)
+    unit: Mapped[str] = mapped_column(String, unique=True, nullable=True)
     numberBarrel: Mapped[int] = mapped_column(Integer, unique=False, nullable=True)
-    typeBarrel_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey('typeBarrel.id'),
+    typeBarrel_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey('type_barrels.id'),
                                                        nullable=False)
     typeBarrel: Mapped["TypeBarrel"] = relationship('TypeBarrel',back_populates="typeBarrel")
     position_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey('positions.id'),

@@ -49,7 +49,7 @@ def upgrade() -> None:
         sa.Column("garbageMass", sa.Integer, nullable=False),
         sa.Column("neighbourhood_id", UUID(as_uuid=True), nullable=True),
         sa.Column("group_id", UUID(as_uuid=True), nullable=True),
-        sa.Column("price", sa.Float, nullable=False),
+        sa.Column("price", sa.Float, nullable=True),
         sa.Column("state_id", UUID(as_uuid=True), nullable=True),
         sa.Column("force_id", UUID(as_uuid=True), nullable=True),
         sa.Column("is_deleted", sa.Boolean(), nullable=False),
@@ -70,7 +70,7 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_table(
-        "neihbourhoods",
+        "neighbourhoods",
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=True),
         sa.Column("updated_at", sa.DateTime(timezone=True), nullable=True),
         sa.Column("id", UUID(as_uuid=True), nullable=False, unique=True),
@@ -88,7 +88,7 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_table(
-        "typeBarrels",
+        "type_barrels",
         sa.Column("created_at", sa.DateTime(timezone=True), nullable=True),
         sa.Column("updated_at", sa.DateTime(timezone=True), nullable=True),
         sa.Column("id", UUID(as_uuid=True), nullable=False, unique=True),
@@ -124,7 +124,7 @@ def downgrade():
     op.drop_table("users")
     op.drop_table("owners")
     op.drop_table("forces")
-    op.drop_table("neihbourhoods")
+    op.drop_table("neighbourhoods")
     op.drop_table("groups")
     op.drop_table("typeBarrels")
     op.drop_table("positions")

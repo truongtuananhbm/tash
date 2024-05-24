@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from app.src.exceptions.error_code import AuthErrorCode
 from app.src.models import BlacklistToken, User
 from app.src.repositories.blacklist_token import BlackListTokenRepository
-from app.src.repositories.user_system import UserSystemRepository
+from app.src.repositories.user import UserSystemRepository
 from app.src.schemas.blacklist_token import BlackListTokenCreate
 from app.src.schemas.session import TokenPayload
 from app.src.utils.security import jwt_create_token, jwt_decode_token

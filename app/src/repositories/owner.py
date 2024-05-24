@@ -18,20 +18,18 @@ class OwnerRepository(BaseSQLRepository[models.Owner]):
         query = session.query(self.model).filter(
             self.model.is_deleted.is_(False),
         )
-        if filters.id:
-            query = query.filter(self.model.id == filters.id)
-        if filters.name:
+        if filters.name != 'string' and filters.name:
             query = query.filter(self.model.name.like(f"%{filters.name}%"))
-        if filters.address:
+        if filters.address != 'string' and filters.address:
             query = query.filter(self.model.address == filters.address)
-        if filters.garbageMass:
+        if filters.garbageMass!=0 and filters.garbageMass:
             query = query.filter(self.model.garbageMass == filters.garbageMass)
-        if filters.group_id:
+        if filters.group_id != 'string' and filters.group_id:
             query = query.filter(self.model.group_id == filters.group_id)
-        if filters.state_id:
+        if filters.state_id != 'string' and filters.state_id:
             query = query.filter(self.model.state_id == filters.state_id)
-        if filters.force_id:
+        if filters.force_id != 'string' and filters.force_id:
             query = query.filter(self.model.force_id == filters.force_id)
-        resources = query.all()
-        return resources
+        owners = query.all()
+        return owners
 

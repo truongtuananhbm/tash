@@ -17,13 +17,11 @@ class BEErrorCode(Enum):
     CONTENT_NOT_FOUND = BusinessException(ExceptionDetail(message="Content Not Found", code="BE0004"))
     RESULT_NOT_FOUND = BusinessException(ExceptionDetail(message="Result Not Found", code="BE0005"))
     TOKEN_NOT_FOUND = BusinessException(ExceptionDetail(message="Token Not Found", code="BE0006"))
-    WORKER_NOT_FOUND = BusinessException(ExceptionDetail(message="Worker Not Found", code="BE0007"))
-    WORKER_EXISTED = BusinessException(ExceptionDetail(message="Worker Existed", code="BE0008"))
     CONFIG_NOT_FOUND = BusinessException(ExceptionDetail(message="Config Not Found", code="BE0009"))
     CONFIG_EXISTED = BusinessException(ExceptionDetail(message="Config Existed", code="BE0010"))
-    TASK_TYPE_NOT_FOUND = BusinessException(ExceptionDetail(message="Task Type Not Found", code="BE0011"))
-    TASK_TYPE_EXISTED = BusinessException(ExceptionDetail(message="Task Type Existed", code="BE0012"))
-    JOB_NOT_FOUND = BusinessException(ExceptionDetail(message="Job Not Found", code="BE0013"))
+    FORCE_NOT_FOUND = BusinessException(ExceptionDetail(message="Force Not Found", code="BE0011"))
+    TYPE_BARREL_NOT_FOUND = BusinessException(ExceptionDetail(message="Type Barrel Not Found", code="BE0012"))
+    POSITION_NOT_FOUND = BusinessException(ExceptionDetail(message="Position Not Found", code="BE0013"))
     JOB_EXISTED = BusinessException(ExceptionDetail(message="Job Existed", code="BE0014"))
     # JOB_CREATING_ERROR = BusinessException(ExceptionDetail(message="Can't Creat Job", code="BE0015"))
     ROLE_NOT_FOUND = BusinessException(ExceptionDetail(message="Role Not Found", code="BE0018"))
@@ -39,6 +37,9 @@ class BEErrorCode(Enum):
     PERMISSION_EXITED = BusinessException(ExceptionDetail(message="Permission Exited", code="BE0027"))
     PERMISSION_NOT_FOUND = BusinessException(ExceptionDetail(message="Permission Not Found", code="BE0028"))
     OWNER_NOT_FOUND = BusinessException(ExceptionDetail(message="Owner Not Found", code="BE0029"))
+    NEIGHBOURHOOD_NOT_FOUND = BusinessException(ExceptionDetail(message="Neighbourhood Not Found", code="BE0030"))
+    STATE_NOT_FOUND = BusinessException(ExceptionDetail(message="State Not Found", code="BE0031"))
+
 
 class ServerErrorCode(Enum):
     """doc."""
@@ -70,4 +71,4 @@ class AuthErrorCode(Enum):
     EXPIRED_REFRESH_TOKEN = BusinessException(ExceptionDetail(message="Expired Refresh Token", code="AUTH0014"))
     INVALID_TOKEN = BusinessException(ExceptionDetail(message="Invalid Token", code="AUTH0015"))
     EMAIL_EXISTED = BusinessException(ExceptionDetail(message="Email Has Been Used", code="AUTH0016"))
-    ORGANIZATION_NOT_FOUND = BusinessException(ExceptionDetail(message="Organization Not Found", code="AUTH0017"))
+

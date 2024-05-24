@@ -11,7 +11,7 @@ from app.src import models
 from app.src.exceptions.error_code import AuthErrorCode, BEErrorCode
 from app.src.models import User
 from app.src.repositories.blacklist_token import BlackListTokenRepository
-from app.src.repositories.user_system import UserSystemRepository
+from app.src.repositories.user import UserSystemRepository
 from app.src.schemas.session import TokenPayload
 from app.src.schemas.user_organization import UserOrganizationCreate, UserOrganizationUpdate
 from app.src.schemas.user_system import UserSystemCreate, UserSystemUpdate

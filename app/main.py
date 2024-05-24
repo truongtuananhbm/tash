@@ -4,7 +4,7 @@ import sys
 import decouple
 import uvicorn
 
-# decouple.config = decouple.Config(decouple.RepositoryEnv(sys.argv[1]))
+#decouple.config = decouple.Config(decouple.RepositoryEnv(sys.argv[1]))
 
 if __name__ == '__main__':
     sys.path.insert(0, '..')

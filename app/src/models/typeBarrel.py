@@ -17,4 +17,4 @@ class TypeBarrel(Base):
     created_at: Mapped[TIMESTAMP] = mapped_column(TIMESTAMP, server_default=func.now(), nullable=False)
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp(), nullable=False)
     is_deleted: Mapped[bool] = mapped_column(BOOLEAN, default=False, nullable=False)
-    typeBarrel: Mapped[List["Force"]] = relationship('Force', back_populates="typeBarrel")
+    typeBarrel:  Mapped[list["Force"]] = relationship('Force',back_populates="typeBarrel")

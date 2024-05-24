@@ -8,6 +8,12 @@ from app.src.controllers.user_controller import users_routers
 from app.src.exceptions.exception import BusinessException
 from app.src.exceptions.exception_handler import business_exception_handler
 from app.src.controllers.owner_controller import owners_routers
+from app.src.controllers.neighbourhood_controller import neighbourhoods_routers
+from app.src.controllers.group_controller import groups_routers
+from app.src.controllers.state_controller import states_routers
+from app.src.controllers.force_controller import forces_routers
+from app.src.controllers.type_barrel_controller import type_barrels_routers
+from app.src.controllers.position_controller import positions_routers
 
 app = FastAPI()
 
@@ -26,7 +32,7 @@ def custom_openapi():
         return app.openapi_schema
 
     openapi_schema = get_openapi(
-        title="Resource-Management",
+        title="Tash-Management",
         version=app.version,
         openapi_version=app.openapi_version,
         terms_of_service=app.terms_of_service,
@@ -50,7 +56,13 @@ def custom_openapi():
 
 app.openapi = custom_openapi
 app.exception_handler(BusinessException)(business_exception_handler)
-PREFIX = "/Resource-Management"
+PREFIX = "/Tash-Manager"
 app.include_router(auth_routers, tags=["Authentication"], prefix=PREFIX)
 app.include_router(users_routers, tags=["User"], prefix=PREFIX)
 app.include_router(owners_routers, tags=["Owner"], prefix=PREFIX)
+app.include_router(neighbourhoods_routers, tags=["Neighbourhood"], prefix=PREFIX)
+app.include_router(groups_routers, tags=["Group"], prefix=PREFIX)
+app.include_router(states_routers, tags=["State"], prefix=PREFIX)
+app.include_router(forces_routers, tags=["Force"], prefix=PREFIX)
+app.include_router(type_barrels_routers, tags=["Type Barrel"], prefix=PREFIX)
+app.include_router(positions_routers, tags=["Position"], prefix=PREFIX)

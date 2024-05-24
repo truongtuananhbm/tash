@@ -17,4 +17,4 @@ class Group(Base):
     created_at: Mapped[TIMESTAMP] = mapped_column(TIMESTAMP, server_default=func.now(), nullable=False)
     updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.current_timestamp(), nullable=False)
     is_deleted: Mapped[bool] = mapped_column(BOOLEAN, default=False, nullable=False)
-    owners: Mapped[List["Owner"]] = relationship('Owner', back_populates="group")
+    group:  Mapped[list["Owner"]] = relationship('Owner',back_populates="group")
