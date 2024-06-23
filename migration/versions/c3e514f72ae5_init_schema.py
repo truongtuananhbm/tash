@@ -126,7 +126,8 @@ def downgrade():
     op.drop_table("forces")
     op.drop_table("neighbourhoods")
     op.drop_table("groups")
-    op.drop_table("typeBarrels")
+    op.drop_table("type_barrels")
     op.drop_table("positions")
     op.drop_table("states")
+    op.drop_table("blacklist_tokens")
     # ### end Alembic commands ###

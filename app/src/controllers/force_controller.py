@@ -1,5 +1,5 @@
 """Define force controller."""
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends, WebSocket
 from sqlalchemy.orm import Session
 from app.src.models import Force
 from app.src.schemas.response import ResponseObject
@@ -10,7 +10,6 @@ from app.src.utils.connection.sql_connection import get_db_session
 
 
 force_service = ForceService()
-
 forces_routers = APIRouter()
 
 
@@ -21,7 +20,7 @@ def update_owner(force_id: str, force_update: ForceUpdate, db_session: Session =
     return ResponseObject(data=row2dict(data), code="BE0000")
 
 
-@forces_routers.patch("/forces")
+@forces_routers.patch("/force")
 def search_forces(force_filters: ForceUpdate, db_session: Session = Depends(get_db_session)) -> ResponseObject: # noqa
     """Get forces."""
     data = force_service.search_forces(db_session, filters=force_filters)
@@ -48,3 +47,10 @@ def delete_force(force_id: str, db_session: Session = Depends(get_db_session)) -
     """Delete a force."""
     force_service.delete_force(db_session, force_id)
     return ResponseObject(code="BE0000")
+
+
+@forces_routers.patch("/forces")
+def get_forces(db_session: Session = Depends(get_db_session)) -> ResponseObject: # noqa
+    """Get forces."""
+    data = force_service.get_forces(db_session)
+    return ResponseObject(data=[row2dict(force) for force in data], code="BE0000")

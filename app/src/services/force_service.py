@@ -91,3 +91,10 @@ class ForceService(object):
             forces_data.append(force_data)
         return forces_data
     
+    def get_forces(self, db_session: Session) -> List[models.Force]:
+        """Define get forces method."""
+        forces = self.force_repository.get_all(db_session)
+        if not forces:
+           raise BEErrorCode.FORCE_NOT_FOUND.value
+        return forces
+    
