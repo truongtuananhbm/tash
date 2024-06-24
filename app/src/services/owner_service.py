@@ -126,3 +126,10 @@ class OwnerService(object):
         excel_file.seek(0)
         return excel_file.getvalue(), filename
     
+    def get_owners(self, db_session: Session) -> List[models.Owner]:
+        """Define get owners method."""
+        owners = self.owner_repository.get_all(db_session)
+        if not owners:
+           raise BEErrorCode.OWNER_NOT_FOUND.value
+        return owners
+    

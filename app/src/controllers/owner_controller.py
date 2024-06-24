@@ -25,7 +25,7 @@ def update_owner(owner_id: str, owner_update: OwnerUpdate, db_session: Session =
     return ResponseObject(data=row2dict(data), code="BE0000")
 
 
-@owners_routers.patch("/owners")
+@owners_routers.patch("/owner")
 def search_owners(owner_filters:OwnerUpdate, db_session: Session = Depends(get_db_session)) -> ResponseObject: # noqa
     """Get owners."""
     data = owner_service.search_owners(db_session, filters=owner_filters)
@@ -58,3 +58,10 @@ def generate_excel(filters: OwnerUpdate , db_session: Session = Depends(get_db_s
     """doc,"""
     excel_data, filename = owner_service.generate_excel(db_session, filters)  
     return Response(content=excel_data, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", headers={"Content-Disposition": f"attachment; filename={filename}"})
+
+
+@owners_routers.patch("/owners")
+def get_owners(db_session: Session = Depends(get_db_session)) -> ResponseObject: # noqa
+    """Get owners."""
+    data = owner_service.get_owners(db_session)
+    return ResponseObject(data=[row2dict(owner) for owner in data], code="BE0000")
