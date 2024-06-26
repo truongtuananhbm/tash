@@ -101,10 +101,10 @@ class OwnerService(object):
         """Define method to search owner based on filters."""
 
         owers = self.owner_repository.search_owners(db_session, filters)
-        sorted_owner = sorted(owers, key=lambda x: x.created_at)
+
         if not owers:
             raise BEErrorCode.OWNER_NOT_FOUND.value
-        return sorted_owner
+        return owers
     
     def generate_excel(self, db_session: Session, filters: OwnerUpdate) -> tuple[bytes, str]:
         """Generates and returns Excel data and filename for owner report."""
